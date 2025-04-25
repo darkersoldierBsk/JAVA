@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class pomodoroTimer {
+public class PomodoroTimer {
 
     private static JFrame frame;
     private static JLabel timerLabel;
@@ -27,15 +27,15 @@ public class pomodoroTimer {
         frame.setLocationRelativeTo(null); // Center on screen
 
         // Load reset icon
-        resetIcon = new ImageIcon(pomodoroTimer.class.getResource("/assets/reset.png"));
+        resetIcon = new ImageIcon(PomodoroTimer.class.getResource("/assets/reset.png"));
         originalResetImage = resetIcon.getImage();
 
         // Load settings icon
-        settingsIcon = new ImageIcon(pomodoroTimer.class.getResource("/assets/settings.png"));
+        settingsIcon = new ImageIcon(PomodoroTimer.class.getResource("/assets/settings.png"));
 
         // Background image
         Image backgroundImage = new ImageIcon(
-                pomodoroTimer.class.getResource("/assets/background1.jpg")).getImage();
+                PomodoroTimer.class.getResource("/assets/background1.jpg")).getImage();
         BackgroundPanel panel = new BackgroundPanel(backgroundImage);
         panel.setLayout(new BorderLayout());
 
