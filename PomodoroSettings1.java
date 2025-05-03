@@ -45,8 +45,8 @@ public class PomodoroTimer {
     public static int colorChoice = 0;
 
     //TIMER SETTINGS AND VARIABLES
-    private static boolean isRunning = false; // 🔥 Added to track if timer is running
-    private static Timer countdownTimer;      // 🔥 Timer that ticks every second
+    private static boolean isRunning = false; // Added to track if timer is running
+    private static Timer countdownTimer;      // Timer that ticks every second
     private static boolean isTimerEditable = false; // Timer is in edit mode
 
     //IMAGE ICONS
@@ -55,7 +55,7 @@ public class PomodoroTimer {
     private static JLabel iconLabel;
     private static ImageIcon baseResetImage;
     //private static Image originalResetImage;
-    static Image baseSettingsImage;  // add this at class level
+    static Image baseSettingsImage; 
 
 
     //RESIZED BACKGROUND IMAGE
@@ -158,11 +158,11 @@ public class PomodoroTimer {
             public void actionPerformed(ActionEvent e) {
                 //themes(0);
                 if(!isTimerEditable){
-                    if (!isRunning) { // 🔥 If not running, start the timer
+                    if (!isRunning) { //  If not running, start the timer
                         startCountdown();
                         start = (start == 0 || start == 2) ? 1 : start;
                         start = (start == 5) ? 4 : start;
-                    } else { // 🔥 If running, pause the timer
+                    } else { //  If running, pause the timer
                         pauseCountdown();
 
                         if(start != 4){
@@ -466,11 +466,11 @@ public class PomodoroTimer {
         frame.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                int newWidth = frame.getWidth();    // 🔥 recalculate width
-                int newHeight = frame.getHeight();  // 🔥 recalculate height
+                int newWidth = frame.getWidth();    //  recalculate width
+                int newHeight = frame.getHeight();  //  recalculate height
                 resizedBackgroundImage = originalBackgroundImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
 
-                // 🔥 update button positions dynamically
+                //  update button positions dynamically
                 startButton.setBounds((9 * newWidth) / 32, (9 * newHeight) / 18, (9 * newWidth) / 32, (2 * newHeight) / 18);
                 settingsButton.setBounds((29*newWidth)/32,newHeight/72,(2*newWidth)/32,(2*newHeight)/18);
                 timerButton.setBounds(newWidth / 4, (5 * newHeight) / 18, (2 * newWidth) / 4, (6 * newHeight) / 32);
@@ -481,7 +481,7 @@ public class PomodoroTimer {
 
 
                 //timerButton.setFont(finalTimerFont.deriveFont(Font.BOLD, (float) (27 * newHeight) /160)); // button sizeının 3 katının 5e bölümü 9*3/32*5
-                // 🔥 Dynamically adjust timer font size
+                //  Dynamically adjust timer font size
                 //LOOOKKKKK AGAINNNNNNNNNNNNNNNNNNNN
                 /*
                 int dynamicFontSize = (32 * newHeight) / 160;
@@ -530,10 +530,10 @@ public class PomodoroTimer {
     } //;
 
     // BACKGROUND PANEL CLASS
-    // 👉 Updated BackgroundPanel to use resized image cache
+    //  Updated BackgroundPanel to use resized image cache
     static class BackgroundPanel extends JPanel {
         public BackgroundPanel() {
-            setDoubleBuffered(true); // 👉 Added double buffering
+            setDoubleBuffered(true); //  Added double buffering
         }
 
         @Override
@@ -546,7 +546,7 @@ public class PomodoroTimer {
     }
 
     //TIMER FUNCTIONS
-    private static void startCountdown() { // 🔥 Start countdown
+    private static void startCountdown() { //  Start countdown
         if (countdownTimer == null) {
             countdownTimer = new Timer(200, new ActionListener() { // every 1000 ms
                 @Override
@@ -578,7 +578,7 @@ public class PomodoroTimer {
         isRunning = true;
     }
 
-    private static void pauseCountdown() { // 🔥 Pause countdown
+    private static void pauseCountdown() { //  Pause countdown
         if (countdownTimer != null) {
             countdownTimer.stop();
             System.out.println("Timer paused.");
@@ -586,14 +586,14 @@ public class PomodoroTimer {
         isRunning = false;
     }
 
-    private static void updateTimerDisplay() { // 🔥 Update timer text
+    private static void updateTimerDisplay() { //  Update timer text
         int minutes = timeLeft / 60;
         int seconds = timeLeft % 60;
         String timeFormatted = String.format("%02d:%02d", minutes, seconds);
         timerButton.setText(timeFormatted);
     }
 
-    private static void updateTimerDisplayManual(int minutes, int seconds) {// 🔥 Update timer text
+    private static void updateTimerDisplayManual(int minutes, int seconds) {//  Update timer text
         timeLeft = minutes * 60 + seconds;
 
         minutes = timeLeft / 60;
@@ -668,7 +668,7 @@ public class PomodoroTimer {
     }
 
     private static void startBreak() {
-        // Set up the break timer (for example, 5 minutes)
+        // Set up the break timer (for example, 1 minute)
         timeLeft = 1 * 60; // 5 minutes break
         updateTimerDisplay();
         startButton.setText("Start Break");
@@ -698,7 +698,7 @@ public class PomodoroTimer {
                 endClip.stop();
             }
             endClip.setFramePosition(0); // ⏮ Rewind to beginning
-            endClip.start();             // ▶️ Play immediately
+            endClip.start();             // ▶ Play immediately
         }
     }
 
